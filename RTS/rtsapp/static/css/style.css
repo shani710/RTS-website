@@ -1,0 +1,33 @@
+#button {
+    color: red;
+    border-radius: 20px;
+    font-weight: bold;
+    margin-top: 100px;
+
+
+}
+
+#button a:hover {
+    /* background-color: blue; */
+    color: red;
+
+}
+
+#footer a,
+#contact a {
+    color: red;
+
+}
+
+
+#scrollbtn {
+    position: fixed;
+    bottom: 20px;
+    right: 40px;
+    z-index: 99;
+    border: none;
+    color: red;
+    background: #00abff;
+    padding: 10px;
+    border-radius: 10px;
+}
