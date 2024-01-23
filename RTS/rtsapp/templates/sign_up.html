@@ -1,0 +1,93 @@
+<html>
+{% load static %}
+
+<head>
+    <title>User Registration</title>
+    <link rel="stylesheet" href="{% static 'css/mystyle.css' %}">
+    <style>
+        body#signup {
+            background-image: url("{% static 'images/bgtexture1.jpeg' %}");
+            /* Add other background properties as needed */
+        }
+    </style>
+    <script>
+        function checkpassword() {
+            if (document.signup.pwd.value != document.signup.cpwd.value) {
+                alert('Passward and confrim password does not same');
+                document.signup.cpwd.focus();
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+
+<body>
+    {% include 'base_home.html' %}
+    <hr class="mt-0">
+    <div class=" card shadow bg-dark m-5" id="signup">
+        <div class="card-body">
+            <h5 class="p-2" style="border-bottom: 2px solid orange;"> Create an Account(VC) </h5>
+            <div class="container-fluid">
+                <form method="post" enctype="multipart/form-data" name="signup" onsubmit="return checkpassword()"
+                    id="form">
+                    {% csrf_token %}
+                    <div class="form-row">
+                        <div class="col-sm-6">
+                            <label for="">Name</label>
+                            <input type="text" class="form-control" name="firstname" placeholder="Enter First name"
+                                required pattern="[A-Za-z]+">
+                        </div>
+
+                        <div class="col-sm-6">
+                            <label for="">Contact</label>
+                            <input type="text" class="form-control" name="contact" placeholder="Contact Number"
+                                required>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <label for="">Contact Type</label>
+                            <select class="form-control" name="contact_type" required>
+                                <option value="choice">Select your choice</option>
+                                <option value="vc">VC</option>
+                                <option value="uc">UC</option>
+                            </select>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <label for="">Password</label>
+                            <input type="password" class="form-control" name="pwd" placeholder="Enter Password"
+                                required>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <label for="">Confrim Password</label>
+                            <input type="text" class="form-control" name="cpwd" placeholder="Enter Password Again "
+                                required>
+                            <input type="submit" name="submit" id="" value="Submit" class="m-3 px-3 btn btn-primary">
+
+                        </div>
+
+                        <div class="col-sm-6">
+                        </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    {% if error == "no" %}
+    <script>
+        alert('Signup Successful');
+        window.location = ('{% url "vc" %}');
+    </script>
+    {% endif %}
+
+    {% if error == "yes" %}
+    <script>
+        alert('Something went wrong try again....');
+    </script>
+    {% endif %}
+
+</body>
+
+</html>

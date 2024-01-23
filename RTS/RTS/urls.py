@@ -27,7 +27,9 @@ urlpatterns = [
     path('base_home',base_home, name='base_home'),
     path('vc_login',vc_login, name='vc_login'),
     path('admin_login',admin_login, name='admin_login'),
-
+    path('vc',vc, name='vc'),
+    path('admin_log',admin_log, name='admin_log'),
+    path('sign_up',sign_up, name='sign_up'),
 
 
 ]
